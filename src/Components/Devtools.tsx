@@ -1,5 +1,6 @@
 import { Box, createStyles, Flex, ThemeIcon, Transition } from "@mantine/core";
 import { UseFormReturnType } from "@mantine/form/lib/types";
+import { useToggle } from "@mantine/hooks";
 import ToolsIcon from "./ToolsIcon";
 
 const useStyles = createStyles((theme) => ({
@@ -23,15 +24,20 @@ const useStyles = createStyles((theme) => ({
 
 const DevTools = ({ form }: any) => {
   const { classes } = useStyles();
+  const [showDevTools, toggleDevTools] = useToggle([true, false]);
+
   return (
     <>
       <Flex justify={"end"}>
-        <ThemeIcon className={classes.toolsIcon}>
+        <ThemeIcon
+          className={classes.toolsIcon}
+          onClick={() => toggleDevTools()}
+        >
           <ToolsIcon />
         </ThemeIcon>
       </Flex>
       <Transition
-        mounted={true}
+        mounted={showDevTools}
         transition="slide-left"
         duration={500}
         timingFunction="ease-in"
