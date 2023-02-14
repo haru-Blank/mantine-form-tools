@@ -87,7 +87,7 @@ const App = () => {
           <Button type="submit">Sign Up</Button>
         </SimpleGrid>
       </form>
-      <DevTools />
+      <DevTools form={form} />
     </Container>
   );
 };
