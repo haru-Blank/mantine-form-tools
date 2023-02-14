@@ -1,5 +1,11 @@
+import DevTools from "./Components/Devtools";
+
 const App = () => {
-  return <h1>hello</h1>;
+  return (
+    <>
+      <DevTools />
+    </>
+  );
 };
 
 export default App;
