@@ -11,6 +11,8 @@ import {
 import { UseFormReturnType } from "@mantine/form/lib/types";
 import { useToggle } from "@mantine/hooks";
 import CloudIcons from "./CloudIcons";
+import DevFields from "./DevFields";
+import ToolsHeader from "./ToolsHeader";
 import ToolsIcon from "./ToolsIcon";
 
 const useStyles = createStyles((theme) => ({
@@ -19,10 +21,9 @@ const useStyles = createStyles((theme) => ({
     top: 0,
     right: 0,
     width: 256,
-    padding: theme.spacing.md,
     height: "100vh",
     overflow: "scroll",
-    backgroundColor: theme.colors.red[5],
+    backgroundColor: theme.colors.indigo[6],
   },
   toolsIcon: {
     position: "fixed",
@@ -57,20 +58,11 @@ const DevTools = ({ form }: any) => {
         {(styles) => (
           <Box className={classes.devToolsContainer}>
             <Stack>
-              <Text
-                component="h2"
-                m="0"
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 4,
-                }}
-              >
-                <ThemeIcon size={24} sx={{ background: "transparent" }}>
-                  <CloudIcons />
-                </ThemeIcon>
-                Mantine Form Tools
-              </Text>
+              <ToolsHeader />
+
+              <Box p={"md"}>
+                <DevFields form={form} />
+              </Box>
             </Stack>
           </Box>
         )}
