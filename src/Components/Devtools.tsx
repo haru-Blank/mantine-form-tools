@@ -6,6 +6,7 @@ import {
   ThemeIcon,
   Text,
   Transition,
+  Accordion,
 } from "@mantine/core";
 import { UseFormReturnType } from "@mantine/form/lib/types";
 import { useToggle } from "@mantine/hooks";
