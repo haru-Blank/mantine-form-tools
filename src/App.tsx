@@ -3,6 +3,7 @@ import {
   Checkbox,
   Container,
   PasswordInput,
+  Select,
   SimpleGrid,
   Text,
   TextInput,
@@ -22,6 +23,18 @@ const fields = [
     label: "Last Name",
     placeholder: "Doe",
     Component: TextInput,
+  },
+  {
+    name: "gender",
+    label: "Gender",
+    placeholder: "M/F/O",
+    Component: Select,
+    required: true,
+    data: [
+      { label: "Male", value: "M" },
+      { label: "Female", value: "F" },
+      { label: "Others", value: "O" },
+    ],
   },
   {
     name: "email",
@@ -49,6 +62,7 @@ const App = () => {
       lastname: "",
       password: "",
       email: "",
+      gender: "",
       remember_me: false,
     },
 
@@ -64,13 +78,17 @@ const App = () => {
   });
 
   const formFields = fields.map((field) => {
-    const { name, label, placeholder, Component } = field;
+    const { name, label, placeholder, Component, ...rest } = field;
+
     return (
       <Component
-        key={name}
-        {...form.getInputProps(field.name)}
-        label={label}
-        placeholder={placeholder}
+        {...{
+          key: name,
+          label,
+          placeholder,
+          ...rest,
+          ...form.getInputProps(field.name),
+        }}
       />
     );
   });
